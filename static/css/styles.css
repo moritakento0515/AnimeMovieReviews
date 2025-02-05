@@ -1,0 +1,28 @@
+/* 映画リストアイテム */
+.movie-item {
+    margin-bottom: 1rem;
+}
+
+/* 映画タイトルを大きく強調 */
+.movie-title {
+    font-size: 1.5rem; /* 大きなフォント */
+    font-weight: bold;
+}
+
+/* 映画タイトルリンクをスタイル */
+.movie-link {
+    text-decoration: none; /* リンクの下線を消す */
+    color: #000; /* 黒色 */
+}
+
+/* 映画監督名 */
+.movie-director {
+    font-size: 0.9rem; /* 小さめ */
+    color: #555; /* 薄い色 */
+}
+
+/* 映画視聴日 */
+.movie-date {
+    font-size: 0.8rem; /* さらに小さめ */
+    color: #777; /* さらに薄い色 */
+}

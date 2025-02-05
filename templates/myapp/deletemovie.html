@@ -1,0 +1,21 @@
+{% extends "myapp/base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card shadow-lg border-0">
+        <div class="card-body text-center">
+            <h2 class="card-title text-danger mb-4">映画削除の確認</h2>
+            <p class="lead">本当に削除しますか？</p>
+
+            <form method="post" class="d-inline">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger btn-lg px-4">削除する</button>
+            </form>
+            
+            <a href="{% url 'myapp:index'%}" class="btn btn-secondary btn-lg px-4 ml-2">
+                キャンセル
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

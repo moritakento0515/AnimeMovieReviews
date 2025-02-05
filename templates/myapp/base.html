@@ -1,0 +1,66 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}教えてアニメ映画{% endblock %}</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- カスタムCSS -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    
+    <script>
+        function toggleMenu() {
+            document.getElementById('menu').classList.toggle('hidden');
+        }
+    </script>
+</head>
+<body class="bg-[#2c2f33] text-gray-100">
+    <div class="container mx-auto px-4">
+        <!-- ヘッダー -->
+        <header class="my-6 text-center mb-8">
+            <h1 class="text-4xl font-extrabold text-white tracking-wide py-10 px-6 border-b-2 border-[#000000]">
+                教えてアニメ映画
+            </h1>
+        </header>
+        
+        <!-- ナビゲーション -->
+        <nav class="flex items-center justify-between flex-wrap bg-[#23272a] p-6 shadow-md rounded-lg mb-4">
+            <div class="flex items-center flex-shrink-0 text-white mr-6">
+                <!--<svg class="fill-current h-8 w-8 mr-2" width="54" height="54" viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z"/></svg>
+                -->
+                <a class="font-semibold text-xl tracking-tight text-white hover:text-gray-300 transition" href="{% url 'myapp:index' %}">ホーム</a>
+            </div>
+            <div class="block lg:hidden">
+                <button class="flex items-center px-3 py-2 border rounded text-gray-300 border-gray-400 hover:text-white hover:border-white" onclick="toggleMenu()">
+                    <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+                </button>
+            </div>
+            <div id="menu" class="hidden w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+                <div class="text-sm lg:flex-grow">
+                    <a class="block mt-4 lg:inline-block lg:mt-0 text-gray-300 hover:text-white mr-6 px-4 py-2 rounded" href="{% url 'myapp:registerdirector' %}">監督を追加</a>
+                    <a class="block mt-4 lg:inline-block lg:mt-0 text-gray-300 hover:text-white mr-6 px-4 py-2 rounded" href="{% url 'myapp:registermovie' %}">映画を追加</a>
+                    <a class="block mt-4 lg:inline-block lg:mt-0 text-gray-300 hover:text-white px-4 py-2 rounded" href="{% url 'myapp:writinglog' %}">ログを追加</a>
+                </div>
+                <div>
+                    <a href="#" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-gray-900 hover:bg-white mt-4 lg:mt-0">ログイン</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- コンテンツ -->
+        <div class="bg-[#2c2f33] shadow-lg rounded-lg p-6">
+            {% block content %}{% endblock %}
+        </div>
+
+        <!-- フッター -->
+        <footer class="text-center mt-6 text-gray-400">
+            <p>© 2025 OshieteAnimeMovie</p>
+        </footer>
+    </div>
+</body>
+</html>

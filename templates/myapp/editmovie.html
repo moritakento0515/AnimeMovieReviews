@@ -1,0 +1,58 @@
+{% extends 'myapp/base.html' %}
+
+{% block title %}{{ movie.title }}の詳細{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-4 mt-6">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- 映画詳細情報 -->
+        <div class="relative md:col-span-2 bg-[#d6d6a1] p-6 rounded-lg shadow-md">
+            <!-- 削除ボタンを右上に配置 -->
+            <a href="{% url 'myapp:deletemovie' movie.id %}" 
+                class="absolute top-2 right-2 px-3 py-1 bg-[#E53E3E] text-white rounded-lg shadow hover:bg-[#C53030] transition">
+                削除
+            </a>
+            
+
+            <h1 class="text-3xl font-bold text-black">{{ movie.title }}</h1>
+            <h3 class="text-lg text-gray-900 mt-2">監督: {{ movie.director }}</h3>
+            <p class="mt-4 text-gray-600"><strong>視聴日:</strong> {{ movie.watch_date }}</p>
+        
+            <!-- 視聴ログ -->
+            <div class="mt-6">
+                <h4 class="text-xl font-semibold text-black mb-3">視聴ログ</h4>
+                <ul class="space-y-4">
+                    {% for log in movie.log.all %}
+                    <li class="bg-[#e1e1c9] p-4 rounded-lg shadow-md">
+                        <div>
+                            <p class="text-black font-semibold">{{ log.text }}</p>
+                            <small class="text-gray-400">{{ log.timestamp }}</small>
+                        </div>
+                    </li>
+                    {% empty %}
+                    <li class="text-center text-gray-400">まだ視聴ログはありません。</li>
+                    {% endfor %}
+                </ul>
+
+                <!-- 編集・削除ボタン（フォーム外に表示） -->
+                {% for log in movie.log.all %}
+                <div class="flex space-x-2 mt-4">
+                    <a href="{% url 'myapp:updatelog' log.id %}" class="px-3 py-1 bg-[#3865F2] text-white rounded-lg shadow hover:bg-[#4752c4] transition">編集</a>
+                    <a href="{% url 'myapp:movie_detail' movie.id %}" 
+                        class="px-3 py-1 bg-[#f39c12] text-white rounded-lg shadow hover:bg-[#4752c4] transition">
+                    キャンセル
+                    </a>
+                </div>
+                
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- サイドバー（必要に応じて追加） -->
+        <div class="bg-[#23272a] p-6 rounded-lg shadow-md">
+            <h4 class="text-lg font-semibold text-white">関連情報</h4>
+            <p class="text-gray-400 mt-2">ここに追加情報を表示できます。</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
