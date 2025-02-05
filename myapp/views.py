@@ -1,5 +1,6 @@
 from django.views import generic
 from django.urls import reverse
+from django.shortcuts import render
 from myapp.models import Movie, Director, Log
 from myapp.form import DirectorForm, MovieForm, LogForm
 
@@ -54,3 +55,6 @@ class DeleteMovieView(generic.DeleteView):
     template_name = "myapp/deletemovie.html"
     def get_success_url(self):
         return reverse('myapp:index',)
+    
+def unavailable_page(request):
+    return render(request, 'myapp/unavailable.html')

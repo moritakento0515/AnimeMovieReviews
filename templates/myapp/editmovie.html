@@ -34,12 +34,14 @@
                     {% endfor %}
                 </ul>
 
-                <!-- 編集・削除ボタン（フォーム外に表示） -->
+                <!-- 編集・キャンセルボタン -->
                 {% for log in movie.log.all %}
                 <div class="flex space-x-2 mt-4">
-                    <a href="{% url 'myapp:updatelog' log.id %}" class="px-3 py-1 bg-[#3865F2] text-white rounded-lg shadow hover:bg-[#4752c4] transition">編集</a>
+                    <a href="{% url 'myapp:updatelog' log.id %}" 
+                        class="px-3 py-1 bg-[#3865F2] text-white rounded-lg shadow hover:bg-[#4752c4] transition">
+                    編集</a>
                     <a href="{% url 'myapp:movie_detail' movie.id %}" 
-                        class="px-3 py-1 bg-[#f39c12] text-white rounded-lg shadow hover:bg-[#4752c4] transition">
+                        class="px-3 py-1 bg-[#f39c12] text-white rounded-lg shadow hover:bg-[#e67e22] transition">
                     キャンセル
                     </a>
                 </div>

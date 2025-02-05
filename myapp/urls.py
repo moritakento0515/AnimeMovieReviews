@@ -11,4 +11,6 @@ urlpatterns = [
      path('edit/<int:pk>/',views.EditMovieView.as_view(),name='editmovie'),
      path('update/log/<int:pk>/',views.UpdateLogView.as_view(), name='updatelog'),
      path('delete/movie/<int:pk>/',views.DeleteMovieView.as_view(), name='deletemovie'),
+     path('unavailable/', views.unavailable_page, name='unavailable'),
+     
 ]
